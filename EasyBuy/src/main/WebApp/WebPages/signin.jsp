@@ -5,10 +5,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>signin</title>
+<link rel="stylesheet" type="text/css" href="css/signin.css"/>
 </head>
 <body>
-<h2>Enter your details to login</h2>
+
 <div class="signin">
+<h2>Enter your details to login</h2>
 <form method="get" action= "/signin/validation">
  <label>Phone Number</label><br>
  <input type="text" name="phno" id="phno"><br><br>

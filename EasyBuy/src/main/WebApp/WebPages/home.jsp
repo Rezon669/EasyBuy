@@ -4,14 +4,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/home.css"/>
 <title>homepage</title>
 </head>
 <body>
-<div>
-<form id=home action="/">
-<t>Easy buy</t>
-<input type="button" onclick="window.location.href='/signin';" value="Sign In" />
-<input type="button" onclick="window.location.href='/signup';" value="Sign Up" />
+<div class="home1">
+
+<form id="home" action="/">
+
+<h1>Easy buy</h1><br>
+
+<input  id="signin"  type="button" onclick="window.location.href='/signin';" value="Sign In" />
+
+
+
+<input id="signup" type="button" onclick="window.location.href='/signup';" value="Sign Up" />
 
 
 </form>
