@@ -1,0 +1,48 @@
+@charset "ISO-8859-1";
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:rgb(255, 255, 255);  
+    font-family: 'Arial';  
+}  
+.home1{  
+        width: 450px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;  
+        background: #000080;  
+        border-radius: 15px ;  
+          
+}
+h1 {
+  color: green;
+  background-color:  #000080;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px red;
+  font-size: 40px;
+}
+  .signup {
+    width: 200px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 30px;  
+    padding-left: 7px;  
+    color: blue;  
+  font-size: 100px; 
+  align-items: right;
+
+        }
+        
+  .signin {
+     width: 200px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 30px;  
+    padding-left: 7px;  
+    color: blue;  
+  font-size: 100px; 
+  align-items: left;
+  }
