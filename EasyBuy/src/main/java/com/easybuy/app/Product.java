@@ -1,28 +1,43 @@
 package com.easybuy.app;
 
 import javax.annotation.Generated;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Additem {
+@Table(name = "product")
+public class Product {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	
-	private int id;
+	@Column(nullable = false, length = 45)
 	private String name;
-	private String Price;
-	private String quantity;
-	private String category;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	 @Column(nullable = false, length = 10)
+	private String Price;
+	 
+	 @Column(nullable = false, length = 10)
+	private String quantity;
+	 
+	 @Column(nullable = false, length = 45)
+	private String category;
+	 
+	 @Column(nullable = false, length = 45)
+	private String searchkeyword;
+	
+	 public long getId() {
+			return id;
+		}
+		public void setId(long id) {
+			this.id = id;
+		}
+
 	public String getName() {
 		return name;
 	}
@@ -47,11 +62,13 @@ public class Additem {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	@Override
-	public String toString() {
-		return "Additem [id=" + id + ", name=" + name + ", Price=" + Price + ", quantity=" + quantity + ", category="
-				+ category + "]";
+	public String getSearchkeyword() {
+		return searchkeyword;
 	}
+	public void setSearchkeyword(String searchkeyword) {
+		this.searchkeyword = searchkeyword;
+	}
+	
 		
 
 }

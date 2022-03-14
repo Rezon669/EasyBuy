@@ -3,6 +3,7 @@ package com.easybuy.app;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -17,13 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.easybuy.app.Additemrepo;
+import com.easybuy.app.Productrepo;
 
 @Controller
-public class Additemcontroller {
+public class Productcontroller {
 	
 	@Autowired
-	Additemrepo repo;
+	Productrepo repo;
 	
 /*	@RequestMapping("/")
 	public String app() {
@@ -40,10 +41,10 @@ public class Additemcontroller {
 		
 	return "signup";
 }*/
-	@RequestMapping("/additem")
-	public String additem() {
+	@RequestMapping("/addproduct")
+	public String addproduct() {
 		
-	return "additem";
+	return "product";
 }
 	@RequestMapping("/app")
 	public String home() {
@@ -52,26 +53,26 @@ public class Additemcontroller {
 }
 	
 	
-	@PostMapping("/saveitem")
-	public String saveitem(Additem item) {
+	@PostMapping("/saveproduct")
+	public String saveproduct(Product product) {
 	
-		repo.save(item);
+		repo.save(product);
 		return "thankyou";
 }
-	@GetMapping("/listofitems")
-    public ModelAndView listofitems() {
+	@GetMapping("/listofproducts")
+    public ModelAndView listofproducts() {
 		
-	    ModelAndView mv = new ModelAndView("listofitem");
+	    ModelAndView mv = new ModelAndView("listofproducts");
 	   List list=repo.findAll();
 				mv.addObject("list", list);
-				mv.setViewName("listofitems");
+				mv.setViewName("listofproducts");
 				return mv;		
 		
 	}
-	@GetMapping("/searchitem")
+	@GetMapping("/searchproduct")
 	public String searchitem() {
 		
-		return "searchitem";
+		return "searchproduct";
 		
 		
 	}
@@ -83,7 +84,7 @@ public class Additemcontroller {
 	mv.setViewName("listofitems");
 	return mv;	
 		//return "searchitem";
-	}*/
+	}
 	  @GetMapping("/category")
 	    public String viewHomePage(Model model, @Param("category") String category) {
 	        List<Additem> list = repo.search(category);
@@ -91,5 +92,5 @@ public class Additemcontroller {
 	        model.addAttribute("keyword", category);
 	         
 	        return "listofitems";
-	    }
+	    }*/
 }
