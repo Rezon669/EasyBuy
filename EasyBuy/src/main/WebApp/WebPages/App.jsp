@@ -15,15 +15,15 @@
        <label for="home"><b>Select any one option:</b></label><br><br>
 
 				
-					<input type="button" onclick="window.location.href='/addproduct';" value="Add Item" />	
+					<input type="button" onclick="window.location.href='/addproduct';" value="Add Product" />	
 					<br><br>
 				
 						
-						<input type="button" onclick="window.location.href='/listofproducts';" value="List of Items" />
+						<input type="button" onclick="window.location.href='/listofproducts';" value="List of Products" />
 					<br><br>
 					
 					
-					<input type="button" onclick="window.location.href='/searchitem';" value="Search Item" />
+					<input type="button" onclick="window.location.href='/searchproduct';" value="Search Product" />
 					<br><br>
 				
 	</ul>

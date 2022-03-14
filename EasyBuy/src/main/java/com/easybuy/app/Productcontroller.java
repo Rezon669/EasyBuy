@@ -69,10 +69,10 @@ public class Productcontroller {
 				return mv;		
 		
 	}
-	@GetMapping("/searchitem")
+	@GetMapping("/searchproduct")
 	public String searchitem() {
 		
-		return "searchitem";
+		return "searchproduct";
 		
 		
 	}
