@@ -13,6 +13,14 @@ label{
     color: #08ffd1;  
     font-size: 17px;  
 } 
+h2 {
+  
+  background-color:  rgb(255, 255, 255);
+  color: rgb(28, 0, 255);
+  text-align: center;
+ 
+  font-size: 40px;
+}
 #phno,#password{ 
 	text-align: left;
     width: 300px;  

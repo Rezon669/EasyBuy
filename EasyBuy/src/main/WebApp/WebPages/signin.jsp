@@ -8,9 +8,9 @@
 <link rel="stylesheet" type="text/css" href="css/signin.css"/>
 </head>
 <body>
-
-<div class="signin">
 <h2>Enter your details to login</h2>
+<div class="signin">
+
 <form method="get" action= "/signin/validation">
  <label>Phone Number</label><br>
  <input type="text" name="phno" id="phno"><br><br>
