@@ -8,11 +8,12 @@
 <title>homepage</title>
 </head>
 <body>
+<h1>Easy buy</h1><br>
 <div class="home1">
 
 <form id="home" action="/">
 
-<h1>Easy buy</h1><br>
+
 
 <input  id="signin"  type="button" onclick="window.location.href='/signin';" value="Sign In" />
 
