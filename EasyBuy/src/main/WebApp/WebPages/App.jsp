@@ -11,19 +11,19 @@
 <body>
 <h1>Welcome...!</h1>
   <div class="home">
-  <form id="home" method="get" action="/">   
+  <form id="home" method="get" action="#">   
        <label for="home"><b>Select any one option:</b></label><br><br>
 
 				
-					<input type="button" onclick="window.location.href='/additem';" value="Add Item" />	
+					<input type="button" onclick="href=/addproduct" value="Add Item" />	
 					<br><br>
 				
 						
-						<input type="button" onclick="window.location.href='/listofitems';" value="List of Items" />
+						<input type="button" onclick="window.location.href=/listofproducts" value="List of Items" />
 					<br><br>
 					
 					
-					<input type="button" onclick="window.location.href='/searchitem';" value="Search Item" />
+					<input type="button" onclick="window.location.href=/searchitem" value="Search Item" />
 					<br><br>
 				
 	</ul>

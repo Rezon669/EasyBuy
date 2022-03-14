@@ -1,4 +1,4 @@
-<%@page import="com.easybuy.app.Additem"%>
+<%@page import="com.easybuy.app.Product"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -23,7 +23,7 @@
 		<th>Quantity</th>
 		<th>Category</th>
  <%
- List<Additem> s = (List<Additem>)request.getAttribute("list");
+ List<Product> s = (List<Product>)request.getAttribute("list");
  for(int c=0; c<s.size(); c++){
 	 out.print("<tr> ");
 	 out.print("<td>"+ s.get(c).getId() + "</td>");
