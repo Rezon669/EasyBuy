@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Enter your Product details</h2>
-<div class="additem">
+<div class="addproduct">
 <form method="post" action= "/saveproduct">
 
  <label>Product name</label><br>

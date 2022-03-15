@@ -25,24 +25,24 @@ h1 {
   font-size: 60px;
 }
  #signup {
-    width: 200px;  
-    height: 40px;  
+    width: 170px;  
+    height: 30px;  
     border: none;  
     border-radius: 30px;  
     padding-left: 7px;  
     color: blue;  
-  font-size: 30px; 
-  align-items: right;
+  font-size: 20px; 
+  align-items : left;
 
         }
         
  #signin {
-     width: 200px;  
-    height: 40px;  
+     width: 170px;  
+    height: 30px;  
     border: none;  
     border-radius: 30px;  
     padding-left: 7px;  
     color: blue;  
-  font-size: 30px; 
-  align-items: left;
+  font-size: 20px; 
+  align-items: right;
   }
