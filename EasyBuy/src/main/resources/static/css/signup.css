@@ -48,4 +48,14 @@ label{
   font-size: 20px; 
   
 }  
+a{
+ text-align: right;
+    color: #00ffff;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 18px;
+}
 
+a:hover, a:active {
+  background-color: #408080;
+} 

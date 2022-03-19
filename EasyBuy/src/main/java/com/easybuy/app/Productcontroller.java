@@ -63,7 +63,7 @@ public class Productcontroller {
     public ModelAndView listofproducts() {
 		
 	    ModelAndView mv = new ModelAndView("listofproducts");
-	   List list=repo.findAll();
+	   List<Product> list=repo.findAll();
 				mv.addObject("list", list);
 				mv.setViewName("listofproducts");
 				return mv;		
@@ -84,13 +84,13 @@ public class Productcontroller {
 	mv.setViewName("listofitems");
 	return mv;	
 		//return "searchitem";
-	}
-	  @GetMapping("/category")
-	    public String viewHomePage(Model model, @Param("category") String category) {
-	        List<Additem> list = repo.search(category);
+	}*/
+	  @GetMapping("/searchproducts")
+	    public String search(Model model, @Param("searchkeyword") String searchkeyword) {
+	        List<Product> list = repo.search(searchkeyword);
 	        model.addAttribute("list", list);
-	        model.addAttribute("keyword", category);
-	         
-	        return "listofitems";
-	    }*/
+	      //  model.addAttribute("keyword", searchkeyword);
+	     
+	        return "listofproducts";
+	    }
 }

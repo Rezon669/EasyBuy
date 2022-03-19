@@ -11,15 +11,17 @@
 <h2>Enter your details to login</h2>
 <div class="signin">
 
-<form method="get" action= "/signin/validation">
+<form method="post" action= "/signinvalidation">
  <label>Phone Number</label><br>
- <input type="text" name="phno" id="phno"><br><br>
+ <input type="text" name="mobilenummber" id="mobilenummber"><br><br>
  <label>Password</label><br>
  <input type="password" name="password" id="password"><br><br>
 
 
-<input id="submit" type="submit" value="Sign in">
+<input id="submit" type="submit" value="Sign in"><br><br>
+
 </form>
+<a href="/signup">Create Account</a>
 </div>
 </body>
 </html>

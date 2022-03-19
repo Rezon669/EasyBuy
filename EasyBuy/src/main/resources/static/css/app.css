@@ -34,3 +34,12 @@ a{
     text-decoration: none; 
     font-size: 20px;
 } 
+.button-container-div {
+            text-align: right;
+            border: 1px solid coral;
+           width: 30px;
+            height: 20px;
+            margin: auto;
+            background-color: none;
+            color: #00ffff;
+        }

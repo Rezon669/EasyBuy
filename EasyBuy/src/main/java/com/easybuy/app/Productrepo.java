@@ -11,8 +11,8 @@ public interface Productrepo extends JpaRepository<Product, String>{
 
 	//List findBy(String category, String category2);
 
-	 @Query("SELECT a FROM Product a WHERE a.searchkeyword LIKE %?1%")
-	    public List<Product> search(String category);
+	 @Query("SELECT p FROM Product p WHERE p.searchkeyword LIKE %?1%")
+	    public List<Product> search(String searchkeyword);
 	
 	
 }
