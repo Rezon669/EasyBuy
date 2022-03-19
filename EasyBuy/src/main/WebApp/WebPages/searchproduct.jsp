@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="search" method="get" action="/category">
- <label>Category</label><br>
+<form id="search" method="get" action="/searchproducts">
+
+  <label>Search Keyword</label><br>
+ <input type="text" name="searchkeyword" id="searchkeyword"><br><br>
+<!-- 
+<label>Category</label><br>
  <select name="category" id="category">
   <option value="select one">select one</option>
   <option value="grocery">Grocery</option>
@@ -19,7 +23,7 @@
   <option value="Furniture">Furniture</option>
   <option value="Beauty">Beauty</option>
   <option value="Sports">Sports</option>
-  </select>
+  </select> --> 
 
 <input type="submit" value="submit">
 </form>

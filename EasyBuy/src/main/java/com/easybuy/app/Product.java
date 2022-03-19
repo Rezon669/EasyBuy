@@ -20,10 +20,10 @@ public class Product {
 	private String name;
 	
 	 @Column(nullable = false, length = 10)
-	private String Price;
+	private int price;
 	 
 	 @Column(nullable = false, length = 10)
-	private String quantity;
+	private int quantity;
 	 
 	 @Column(nullable = false, length = 45)
 	private String category;
@@ -44,16 +44,16 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPrice() {
-		return Price;
+	public int getPrice() {
+		return price;
 	}
-	public void setPrice(String price) {
-		Price = price;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	public String getCategory() {

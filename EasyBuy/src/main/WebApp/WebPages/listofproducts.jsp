@@ -13,12 +13,13 @@
 <h2>List of Products</h2>
  
 
-<!-- <a  href="#"> Click here to apply Filter</a> <br></br> -->
+<!-- <a  href="#"> Click here to apply Filter</a> <br></br> 
+ out.print("<td>"+ s.get(c).getId() + "</td>");-->
 
 <table border="2">
 
-		<th>id</th>
-		<th>Product Name</th>
+		<th>Name</th>
+	
 		<th>Price</th>
 		<th>Quantity</th>
 		<th>Category</th>
@@ -26,7 +27,7 @@
  List<Product> s = (List<Product>)request.getAttribute("list");
  for(int c=0; c<s.size(); c++){
 	 out.print("<tr> ");
-	 out.print("<td>"+ s.get(c).getId() + "</td>");
+	
 	 out.print("<td>"+ s.get(c).getName() + "</td>");
 	 out.print("<td>"+ s.get(c).getPrice() + "</td>");
 	 out.print("<td>"+ s.get(c).getQuantity() + "</td>");

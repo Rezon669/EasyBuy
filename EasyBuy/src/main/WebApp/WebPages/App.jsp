@@ -14,19 +14,21 @@
   <form id="home" method="get" action="#">   
        <label for="home"><b>Select any one option:</b></label><br><br>
 
-				
+				 <div class="button-container-div">
 					<input type="button" onclick="window.location.href='/addproduct';" value="Add Product" />	
-					<br><br>
-				
-						
+					
+					</div>
+				<br><br>
+					<div class="button-container-div">	
 						<input type="button" onclick="window.location.href='/listofproducts';" value="List of Products" />
-					<br><br>
-					
-					
+				
+					</div>
+					<br><br>	
+					<div class="button-container-div">
 					<input type="button" onclick="window.location.href='/searchproduct';" value="Search Product" />
 					<br><br>
-				
-	</ul>
+				</div>
+	
 
 </form>
   </div>

@@ -20,7 +20,7 @@ h2{
     padding: 2px;  
 }  
 
-#phno,#password{ 
+#mobilenummber,#password{ 
 	text-align: left;
     width: 300px;  
     height: 30px;  
@@ -37,5 +37,17 @@ h2{
     padding-left: 7px;  
     color: blue;  
   font-size: 20px; 
-  
+ 
+} 
+
+a{
+ text-align: right;
+    color: #00ffff;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 18px;
+}
+
+a:hover, a:active {
+  background-color: #408080;
 } 

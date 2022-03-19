@@ -24,9 +24,12 @@
  <label>Password</label><br>
  <input type="password" name="password" id="password"><br><br>
 
-<input id="submit" type="submit" value="Save">
+<input id="submit" type="submit" value="Save"><br><br>
+
 
 </form>
+
 </div>
+
 </body>
 </html>
