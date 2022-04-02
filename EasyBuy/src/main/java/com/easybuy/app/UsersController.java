@@ -23,12 +23,12 @@ public class UsersController {
 	@Autowired
 	Usersrepo urepo;
 	private String a= "admin";
-/*	
-	@RequestMapping("/")
+	
+	@RequestMapping("/signin")
 	public String app() {
 		
-	return "home";
-}*/
+	return "signin";
+}
 	@RequestMapping("/")
 	public String signin() {
 		
