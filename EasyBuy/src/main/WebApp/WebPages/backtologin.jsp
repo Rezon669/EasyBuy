@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>back-to-login</title>
+<link rel="stylesheet" type="text/css" href="css/backtologin.css"/>
 </head>
 <body>
-<h2>Thank you...!  Successfully created the account </h2>
+<h2>Thank you...! <%= request.getParameter("name") %> Successfully created the account</h2>  
 <h2><a href="/signin">click here</a> to go back to login page</h2>
 </body>
 </html>  
