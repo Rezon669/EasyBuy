@@ -8,13 +8,21 @@ import org.springframework.data.repository.query.Param;
 
 public interface Usersrepo extends JpaRepository<Users, String> {
 
-	@Query("SELECT u.name FROM Users u WHERE" + " u.mobilenummber LIKE %?1% AND "+ " u.password LIKE %?2%")
-    public String finduser(@Param("mobilenummber") String mobilenummber,@Param("password")  String password);
+	//void getDetails(String mobilenumber, String password);
+
+	//@Query("SELECT u.name FROM Users u WHERE" + " u.mobilenummber LIKE %?1% AND "+ " u.password LIKE %?2%")
+  //  public String getDetailsfromDB( String mobilenummber, String password);
+
+//	public String getDetailsfromDB(String mobilenumber, String password);
+
+	public Users findByUsername(String username);
+
+	//public void getDe(String mobilenumber, String password);
 
 	//@Query("SELECT u.uid FROM Users u ")
 //	public List<Object> findalluid(String uid);
 
-
+	 // Users findByUsername(String username);
 
 	
 }

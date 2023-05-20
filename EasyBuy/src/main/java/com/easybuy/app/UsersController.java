@@ -22,46 +22,16 @@ public class UsersController {
 
 	@Autowired
 	Usersrepo urepo;
-	private String a= "admin";
 	
-	@RequestMapping("/signin")
-	public String app() {
-		
-	return "signin";
-}
-	@RequestMapping("/")
-	public String signin() {
-		
-	return "signin";
-}
+	
+	
 	@RequestMapping("/signup")
 	public String signup() {
 		
 	return "signup";
 }
 
-	  @RequestMapping("/signinvalidation")
-	    public String search(Model model, @Param("mobilenummber")  String mobilenummber, @Param("password") String password) {
-		
-	       String uid1 = urepo.finduser(mobilenummber,password);
-	   
-	    	if(uid1!=null && uid1.equals(a)) {
-	    		
-	    			
-	    	return "App";
-	    	
-	    	}
-	    	if (uid1!=null){
-	    		
-	    		return "searchproduct";
-	    	}
-	    	
-	    	else {
-	    		
-	    		return "signin";
-	    	}
-	  }
-	    
+	 
 	
 	    
 	@PostMapping("/createaccount")
