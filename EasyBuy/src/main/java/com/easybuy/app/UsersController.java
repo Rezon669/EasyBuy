@@ -20,8 +20,8 @@ import com.easybuy.app.Usersrepo;
 @Controller
 public class UsersController {
 
-	@Autowired
-	Usersrepo urepo;
+//	@Autowired
+	//Usersrepo urepo;
 	
 	
 	
@@ -32,7 +32,7 @@ public class UsersController {
 }
 
 	 
-	
+	/*
 	    
 	@PostMapping("/createaccount")
 	public String saveuser(Users user) {
@@ -41,7 +41,7 @@ public class UsersController {
 		return "backtologin";
 	}
 
-	    
+	*/    
 
 }
 
