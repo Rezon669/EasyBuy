@@ -3,6 +3,7 @@ package com.easybuy.app;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -42,7 +43,7 @@ public class Productcontroller {
 	return "signup";
 }*/
 	@RequestMapping("/addproduct")
-	public String addproduct() {
+	public String addproduct(HttpSession session) {
 		
 	return "product";
 }

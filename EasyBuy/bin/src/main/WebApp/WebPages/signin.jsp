@@ -5,13 +5,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>signin</title>
-<link rel="stylesheet" type="text/css" href="css/signin.css"/>
+<link rel="stylesheet" type="text/css" href="signin.css"/>
 </head>
 <body>
 <h2>Enter your details to login</h2>
 <div class="signin">
 
-<form method="post" action= "/loginvalidation">
+<form method="get" action= "/loginvalidation">
  <label>User Name</label><br>
  <input type="text" name="username" id="username"><br><br>
  <label>Password</label><br>

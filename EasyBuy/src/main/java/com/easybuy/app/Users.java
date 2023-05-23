@@ -19,6 +19,16 @@ public class Users {
 	private String mobilenumber;
 	private String address;
 	private String password; 
+	
+	public Users() {
+	    // Default constructor implementation
+		
+	}
+	public Users(String username, String password) {
+	    // Default constructor implementation
+		this.username= username;
+		this.password= password;
+	}
 	 
 	public Users(String username, String password, ArrayList arrayList) {
 		// TODO Auto-generated constructor stub

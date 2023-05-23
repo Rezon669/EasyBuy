@@ -25,7 +25,15 @@ public class LoginServiceImpl implements LoginService{
 	                new ArrayList<>());
 	    }
 	
-		
+	    public void createUser(Users user) {
+	        // Check if the username already exists
+	        if (usersrepo.findByUsername(user.getUsername()) != null) {
+	            throw new IllegalArgumentException("Username already exists");
+	        }
+	        
+	        // Save the user to the database
+	        usersrepo.save(user);
+	    }
 	
 
 

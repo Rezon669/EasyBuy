@@ -10,8 +10,10 @@
 <body>
 <h2>Enter your details to create Account</h2>
 <div class="signup">
-<form method="post" action= "/createaccount">
+<form method="get" action="/createaccount">
 
+ 
+    <p>${errorMessage}</p>
  <label>Name</label><br>
  <input type="text" name="name" id="name"><br><br>
  

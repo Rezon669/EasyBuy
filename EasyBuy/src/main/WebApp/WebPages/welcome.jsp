@@ -14,10 +14,10 @@
 
 				<ul>
 				<li>
-					<a data-label="sell" href="/additem">Add Item</a>	
+					<a data-label="sell" href="/addproduct">Add Item</a>	
 					</li><br>
 					<li>
-						<a data-label="buy" href="/listofitems">List of Items</a>
+						<a data-label="buy" href="/listofproducts">List of Items</a>
 					</li><br>
 					<li >
 					<a data-label="hire" href="/searchitem">Search Item</a>	
