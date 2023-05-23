@@ -10,13 +10,13 @@
 <body>
 <h2>Enter your details to create Account</h2>
 <div class="signup">
-<form method="post" action= "/createaccount">
+<form method="get" action="/createaccount">
 
  <label>Name</label><br>
- <input type="text" name="name" id="name"><br><br>
+ <input type="text" name="username" id="username"><br><br>
  
  <label>Mobile Number</label><br>
- <input type="text" name="mobilenummber" id="mobilenummber"><br><br>
+ <input type="text" name="mobilenumber" id="mobilenumber"><br><br>
  
  <label>Address</label><br>
  <input type="text" name="address" id="address"><br><br>
@@ -28,8 +28,8 @@
 
 
 </form>
-<a href="/signin">Already have an Account</a>
 
+<a href="/signin">Already have an Account</a>
 </div>
 
 </body>

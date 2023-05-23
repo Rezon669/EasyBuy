@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class Users {  
 	@Id
 		@GeneratedValue
@@ -14,7 +16,7 @@ public class Users {
     private int uid;
 	private String username;    
 	
-	private String mobilenummber;
+	private String mobilenumber;
 	private String address;
 	private String password; 
 	 
@@ -34,11 +36,11 @@ public class Users {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getMobilenummber() {
-		return mobilenummber;
+	public String getMobilenumber() {
+		return mobilenumber;
 	}
-	public void setMobilenummber(String mobilenummber) {
-		this.mobilenummber = mobilenummber;
+	public void setMobilenumber(String mobilenumber) {
+		this.mobilenumber = mobilenumber;
 	}
 	public String getAddress() {
 		return address;
@@ -54,7 +56,7 @@ public class Users {
 	}
 	@Override
 	public String toString() {
-		return "Users [uid=" + uid + ", username=" + username + ", mobilenummber=" + mobilenummber + ", address=" + address
+		return "Users [uid=" + uid + ", username=" + username + ", mobilenumber=" + mobilenumber + ", address=" + address
 				+ ", password=" + password + "]";
 	}
 }
