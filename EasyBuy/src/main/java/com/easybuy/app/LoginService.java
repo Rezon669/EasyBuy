@@ -6,5 +6,7 @@ public interface LoginService {
 
 	Users loadUserByUsername(String username) throws NameNotFoundException;
 
+	 void createUser(Users user);
+
 
 }

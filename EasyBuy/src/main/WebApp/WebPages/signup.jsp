@@ -12,6 +12,8 @@
 <div class="signup">
 <form method="get" action="/createaccount">
 
+
+    <p>${errorMessage}</p>
  <label>Name</label><br>
  <input type="text" name="username" id="username"><br><br>
  
