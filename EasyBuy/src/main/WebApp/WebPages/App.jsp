@@ -15,17 +15,17 @@
        <label for="home"><b>Select any one option:</b></label><br><br>
 
 				 <div class="button-container-div">
-					<input type="button" onclick="window.location.href='/addproduct';" value="Add Product" />	
+					<input type="button" onclick="window.location.href='/easybuy/secure/addproduct';" value="Add Product" />	
 					
 					</div>
 				<br><br>
 					<div class="button-container-div">	
-						<input type="button" onclick="window.location.href='/listofproducts';" value="List of Products" />
+						<input type="button" onclick="window.location.href='/easybuy/secure/listofproducts';" value="List of Products" />
 				
 					</div>
 					<br><br>	
 					<div class="button-container-div">
-					<input type="button" onclick="window.location.href='/searchproduct';" value="Search Product" />
+					<input type="button" onclick="window.location.href='/easybuy/secure/searchproduct';" value="Search Product" />
 					<br><br>
 				</div>
 	

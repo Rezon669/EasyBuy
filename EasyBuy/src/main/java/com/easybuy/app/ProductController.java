@@ -19,13 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.easybuy.app.Productrepo;
+import com.easybuy.app.ProductRepo;
 
 @Controller
-public class Productcontroller {
+public class ProductController {
 	
 	@Autowired
-	Productrepo repo;
+	ProductRepo repo;
+	
 	
 /*	@RequestMapping("/")
 	public String app() {
@@ -42,26 +43,26 @@ public class Productcontroller {
 		
 	return "signup";
 }*/
-	@RequestMapping("/addproduct")
-	public String addproduct(HttpSession session) {
+	@GetMapping("/easybut/secure/addproduct")
+	public String addProduct(HttpSession session) {
 		
 	return "product";
 }
-	@RequestMapping("/app")
-	public String home() {
+	@RequestMapping("/easybuy/secure/app")
+	public String home(HttpSession session) {
 		
 	return "App";
 }
 	
 	
-	@PostMapping("/saveproduct")
-	public String saveproduct(Product product) {
+	@PostMapping("/easybuy/secure/saveproduct")
+	public String saveProduct(Product product, HttpSession session) {
 	
 		repo.save(product);
 		return "thankyou";
 }
-	@GetMapping("/listofproducts")
-    public ModelAndView listofproducts() {
+	@GetMapping("/easybuy/listofproducts")
+    public ModelAndView listofProducts(HttpSession session) {
 		
 	    ModelAndView mv = new ModelAndView("listofproducts");
 	   List<Product> list=repo.findAll();
@@ -70,8 +71,8 @@ public class Productcontroller {
 				return mv;		
 		
 	}
-	@GetMapping("/searchproduct")
-	public String searchitem() {
+	@GetMapping("/easybuy/secure/searchproduct")
+	public String searchProduct(HttpSession session) {
 		
 		return "searchproduct";
 		
@@ -86,8 +87,8 @@ public class Productcontroller {
 	return mv;	
 		//return "searchitem";
 	}*/
-	  @GetMapping("/searchproducts")
-	    public String search(Model model, @Param("searchkeyword") String searchkeyword) {
+	  @GetMapping("/easybuy/secure/searchproducts")
+	    public String searchProducts(Model model, @Param("searchkeyword") String searchkeyword, HttpSession session) {
 	        List<Product> list = repo.search(searchkeyword);
 	        model.addAttribute("list", list);
 	      //  model.addAttribute("keyword", searchkeyword);

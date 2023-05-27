@@ -23,22 +23,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/createaccount").permitAll()
-                    .antMatchers("/signup").permitAll()
-                    .antMatchers("/loginvalidation").permitAll()
-                   // .antMatchers("/easybuy/**").permitAll()
-                    .anyRequest().authenticated()
+                    .antMatchers("/easybuy/loginvalidation","/easybuy/signup","/easybuy/createaccount" ).permitAll()
+                    .antMatchers("/easybuy/secure/**").authenticated()
+                   // .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                    .loginPage("/signin")
-                    .defaultSuccessUrl("/welcome")
+                    .loginPage("/easybuy/signin")
+                    .defaultSuccessUrl("/easybuy/welcome")
                     .permitAll()
                     .and()
                 .logout()
-                    .logoutUrl("/logout")
+                    .logoutUrl("/easybuy/logout")
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
-                    .logoutSuccessUrl("/signin")
+                    .logoutSuccessUrl("/easybuy/signin")
                     .permitAll();
     }
 }

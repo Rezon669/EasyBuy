@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/searchproduct.css"/>
 </head>
 <body>
-<form id="search" method="get" action="/searchproducts">
+<form id="search" method="get" action="/easybuy/secure/searchproducts">
 
   <label>Search Keyword</label><br><br>
  <input type="text" name="searchkeyword" id="searchkeyword" autofocus><br><br>

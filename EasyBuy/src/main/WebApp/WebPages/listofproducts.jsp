@@ -36,6 +36,6 @@
  }
  %> 
 </table>
-<h4><a href="/app">click here</a> to go back</h4> 
+<h4><a href="/easybuy/secure/app">click here</a> to go back</h4> 
 </body>
 </html>

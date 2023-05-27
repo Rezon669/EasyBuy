@@ -9,6 +9,6 @@
 </head>
 <body>
 <h2>Thank you...! your Product details are recorded...!</h2>
-<h2><a href="/app">click here</a> to go back</h2>
+<h2><a href="/easybuy/secure/app">click here</a> to go back</h2>
 </body>
 </html>
