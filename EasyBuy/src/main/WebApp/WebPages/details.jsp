@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>These are the details:</h2>
-<form action="getdetails" method="get">
+<form action="/easybuy/secure/getdetails" method="get">
 <input type="number" name="cid">
 <input type="submit" value="submit">
 

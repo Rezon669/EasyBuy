@@ -10,7 +10,7 @@
 <body>
 <h2>Enter your details to create Account</h2>
 <div class="signup">
-<form method="get" action="/createaccount">
+<form method="get" action="/easybuy/createaccount">
 
 
     <p>${errorMessage}</p>
@@ -31,7 +31,7 @@
 
 </form>
 
-<a href="/signin">Already have an Account</a>
+<a href="/easybuy/signin">Already have an Account</a>
 </div>
 
 </body>

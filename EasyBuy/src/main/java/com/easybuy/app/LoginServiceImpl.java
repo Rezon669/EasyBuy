@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService{
 
 	@Autowired
-	Usersrepo usersrepo;
+	UsersRepo usersrepo;
 
 	 
 	    public  Users loadUserByUsername(String username) throws NameNotFoundException {
@@ -27,9 +27,14 @@ public class LoginServiceImpl implements LoginService{
 	
 	    public void createUser(Users user) {
 	        // Check if the username already exists
-	        if (usersrepo.findByUsername(user.getUsername()) != null) {
+	    	if (user.getUsername()== null || user.getPassword()==null) {
+	    		 throw new IllegalArgumentException("Username & Password are mandataroy fields");
+	    	}
+	    	else if (usersrepo.findByUsername(user.getUsername()) != null) {
 	            throw new IllegalArgumentException("Username already exists");
 	        }
+	        
+	       
 	        
 	        // Save the user to the database
 	        usersrepo.save(user);

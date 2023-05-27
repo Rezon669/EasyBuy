@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface Usersrepo extends JpaRepository<Users, String> {
+public interface UsersRepo extends JpaRepository<Users, String> {
 
 	//void getDetails(String mobilenumber, String password);
 

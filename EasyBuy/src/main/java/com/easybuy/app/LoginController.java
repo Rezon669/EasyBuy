@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
 	@Autowired
-	Usersrepo usersrepo;
+	UsersRepo usersrepo;
 	
 	private LoginRepo loginrepo;
 	 private final LoginService loginservice;
@@ -29,8 +29,8 @@ public class LoginController {
 
     
 
-    @GetMapping("/signin")
-    public String showLoginPage() {
+    @GetMapping("/easybuy/signin")
+    public String showLoginpage() {
         return "signin"; // return the login page template name
     }
 
@@ -46,7 +46,7 @@ public class LoginController {
 	}
 	*/
     
-    @GetMapping("/createaccount")
+    @GetMapping("/easybuy/createaccount")
     public String createUser( Users user,  HttpSession session,  Model model) {
         try {
             loginservice.createUser(user);
@@ -59,7 +59,7 @@ public class LoginController {
         
     }
     
-    @GetMapping("/loginvalidation")
+    @GetMapping("/easybuy/loginvalidation")
     public String login(@RequestParam(value = "username", required = true) String username,
                         @RequestParam(value = "password", required = true) String password,
                         HttpSession session) {
@@ -72,7 +72,7 @@ public class LoginController {
             return "signin"; // return the login page again if login fails
         }
 
-        @GetMapping("/logout")
+        @GetMapping("/easybuy/logout")
         public String logout(HttpSession session) {
             session.invalidate();
             return "signin"; // redirect to the login page after logout

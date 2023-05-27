@@ -11,7 +11,7 @@
 <h2>Enter your details to login</h2>
 <div class="signin">
 
-<form method="get" action="/loginvalidation">
+<form method="get" action="/easybuy/loginvalidation">
  <label>User Name</label><br>
  <input type="text" name="username" id="username"><br><br>
  <label>Password</label><br>

@@ -9,6 +9,6 @@
 </head>
 <body>
 <h2>Thank you...! <%= request.getParameter("name") %> Successfully created the account</h2>  
-<h2><a href="/signin">click here</a> to go back to login page</h2>
+<h2><a href="/easybuy/signin">click here</a> to go back to login page</h2>
 </body>
 </html>  
