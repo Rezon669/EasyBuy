@@ -4,18 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>back-to-login</title>
+<title>password updated</title>
 <link rel="stylesheet" type="text/css"
-	href="/static/css/backtologin.css" />
+	href="/static/css/passwordupdated.css" />
 </head>
 <body>
-	<br>
-	<br>
-	<h2>
-		Thank you...!
-		<%=request.getParameter("username")%>
-		Successfully created the account
-	</h2>
+	<h2>Thank you...!Successfully updated your password</h2>
 	<h2>
 		<a href="/easybuy/signin">click here</a> to go back to login page
 	</h2>

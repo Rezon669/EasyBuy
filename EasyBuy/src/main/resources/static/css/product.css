@@ -21,11 +21,12 @@ h2{
     text-align: center;  
     color: #277582;  
     padding: 2px;  
+    font-size: 40px; 
 } 
  
 label{  
     color: #08ffd1;  
-    font-size: 17px;  
+    font-size: 20px;  
 }  
 #name,#price,#quantity,#category, #searchkeyword{ 
 	text-align: left;
@@ -47,6 +48,10 @@ label{
     color: blue;  
   font-size: 20px; 
   
+}
+#submit:hover
+{
+  background-color: #c0c0c0;
 }  
 span{  
     color: white;  

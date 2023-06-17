@@ -10,14 +10,28 @@
         border-radius: 15px ;   
           
 } 
+
+#submit:hover
+{
+  background-color: #c0c0c0;
+}
+
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:rgb(255, 255, 255);  
+    font-family: 'Arial';  
+}    
 label{  
     color: #08ffd1;  
-    font-size: 17px;  
-}
+    font-size: 20px;  
+}  
 h2{  
     text-align: center;  
     color: #277582;  
-    padding: 2px;  
+    padding: 2px; 
+    font-size: 40px; 
 }  
 
 #username,#password{ 
@@ -41,11 +55,26 @@ h2{
 } 
 
 a{
- text-align: right;
+ text-align: left;
     color: #00ffff;  
     background-color: none; 
     text-decoration: none; 
-    font-size: 18px;
+    font-size: 20px;
+}
+p{
+ text-align: left;
+    color: #ff0000;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 20px;
+}
+
+t{
+ text-align: left;
+    color: #ff0080;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 20px;
 }
 
 a:hover, a:active {
