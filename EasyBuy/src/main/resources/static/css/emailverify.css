@@ -1,13 +1,6 @@
 @charset "ISO-8859-1";
-
-body  
-{  
-    margin: 0;  
-    padding: 0;  
-    background-color:rgb(255, 255, 255);  
-    font-family: 'Arial';  
-}    
-.signup{  
+ 
+.emailverify{  
           width: 450px;   
         overflow: hidden;  
         margin: auto;  
@@ -16,19 +9,32 @@ body
         background: #000080;  
         border-radius: 15px ;   
           
+} 
+
+#submit:hover
+{
+  background-color: #c0c0c0;
+}
+
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:rgb(255, 255, 255);  
+    font-family: 'Arial';  
+}    
+label{  
+    color: #08ffd1;  
+    font-size: 20px;  
 }  
 h2{  
     text-align: center;  
     color: #277582;  
     padding: 2px; 
     font-size: 40px; 
-} 
- 
-label{  
-    color: #08ffd1;  
-    font-size: 20px;  
 }  
-#username,#mobilenumber,#emailid,#password,#city{ 
+
+#emailid{ 
 	text-align: left;
     width: 300px;  
     height: 30px;  
@@ -36,11 +42,8 @@ label{
     border-radius: 3px;  
     padding-left: 15px; 
     
-}  
- 
-
+} 
 #submit{  
-	
     width: 200px;  
     height: 30px;  
     border: none;  
@@ -48,21 +51,25 @@ label{
     padding-left: 7px;  
     color: blue;  
   font-size: 20px; 
-  
+ 
 } 
-#submit:hover
-{
-  background-color: #c0c0c0;
-}
+
 a{
-    text-align: left;
+ text-align: left;
+    color: #00ffff;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 20px;
+}
+t{
+ text-align: left;
     color: #00ffff;  
     background-color: none; 
     text-decoration: none; 
     font-size: 20px;
 }
 p{
-    text-align: left;
+ text-align: left;
     color: #ff0080;  
     background-color: none; 
     text-decoration: none; 
@@ -70,6 +77,5 @@ p{
 }
 
 a:hover, a:active {
-	 
-  background-color: #8000ff;
+  background-color: #408080;
 } 

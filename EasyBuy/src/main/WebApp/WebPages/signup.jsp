@@ -1,38 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>create-account</title>
-<link rel="stylesheet" type="text/css" href="css/signup.css"/>
+<link rel="stylesheet" type="text/css" href="/static/css/signup.css" />
 </head>
 <body>
-<h2>Enter your details to create Account</h2>
-<div class="signup">
-<form method="get" action="/easybuy/createaccount">
+	<h2>Enter your details to create Account</h2>
+	<div class="signup">
+		<form method="get" action="/easybuy/createaccount">
 
 
-    <p>${errorMessage}</p>
- <label>Name</label><br>
- <input type="text" name="username" id="username"><br><br>
- 
- <label>Mobile Number</label><br>
- <input type="text" name="mobilenumber" id="mobilenumber"><br><br>
- 
- <label>Address</label><br>
- <input type="text" name="address" id="address"><br><br>
- 
- <label>Password</label><br>
- <input type="password" name="password" id="password"><br><br>
+			<p>${errorMessage}</p>
 
-<input id="submit" type="submit" value="Save"><br><br>
+			<label>Username</label><br> <input type="text" name="username"
+				id="username" placeholder="Enter your Username"><br>
+			<br> <label>Email ID</label><br> <input type="text"
+				name="emailid" id="emailid" placeholder="Enter your Email Id"><br>
+			<br> <label>Mobile Number</label><br> <input type="text"
+				name="mobilenumber" id="mobilenumber"
+				placeholder="Enter your Mobile Number"><br>
+			<br> <label>Password</label><br> <input type="password"
+				name="password" id="password" placeholder="Enter the Password"><br>
+			<br> <label>City</label><br> <input type="text" name="city"
+				id="city" placeholder="Enter the City"><br>
+			<br> <input id="submit" type="submit" value="Save"><br>
+			<br>
 
 
-</form>
+		</form>
 
-<a href="/easybuy/signin">Already have an Account</a>
-</div>
+		<a href="/easybuy/signin">Click here to Login</a>
+	</div>
 
 </body>
 </html>

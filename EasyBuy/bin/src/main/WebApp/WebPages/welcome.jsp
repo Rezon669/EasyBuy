@@ -14,7 +14,7 @@
 
 				<ul>
 				<li>
-					<a data-label="sell" href="/additem">Add Item</a>	
+					<a data-label="sell" href="/easybuy/addproduct">Add Item</a>	
 					</li><br>
 					<li>
 						<a data-label="buy" href="/listofitems">List of Items</a>

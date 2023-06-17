@@ -17,33 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.easybuy.app.UsersRepo;
+
 @Controller
 public class UsersController {
 
-//	@Autowired
-	//Usersrepo urepo;
-	
-	
-	
 	@RequestMapping("/signup")
 	public String signup() {
-		
-	return "signup";
-}
 
-	 
-	/*
-	    
-	@PostMapping("/createaccount")
-	public String saveuser(Users user) {
-	
-		urepo.save(user);
-		return "backtologin";
+		return "signup";
 	}
 
-	*/    
-
 }
-
-
-
