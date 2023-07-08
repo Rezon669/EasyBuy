@@ -1,4 +1,4 @@
-package com.easybuy.app;
+package com.easybuy.app.repository;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import com.easybuy.app.entity.Users;
 
 public interface UsersRepo extends JpaRepository<Users, String> {
 

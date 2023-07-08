@@ -1,4 +1,4 @@
-package com.easybuy.app;
+package com.easybuy.app.entity;
 
 import java.util.ArrayList;
 

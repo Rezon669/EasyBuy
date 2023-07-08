@@ -1,4 +1,4 @@
-package com.easybuy.app;
+package com.easybuy.app.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.easybuy.app.UsersRepo;
+import com.easybuy.app.repository.UsersRepo;
 
 @Controller
 public class UsersController {

@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/signup.css" />
 </head>
 <body>
-	<h2>Enter your details to create Account</h2>
+	<h2>Enter your details to Create an Account</h2>
 	<div class="signup">
 		<form method="get" action="/easybuy/createaccount">
 
@@ -32,7 +32,7 @@
 
 		</form>
 
-		<a href="/easybuy/signin">Click here to Login</a>
+		<t></t><a href="/easybuy/signin"> Click here</a><t> to login if you have an account</t>
 	</div>
 
 </body>

@@ -61,6 +61,13 @@ a{
     text-decoration: none; 
     font-size: 20px;
 }
+t{
+    text-align: left;
+    color: #ffffff;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 20px;
+}
 p{
     text-align: left;
     color: #ff0080;  
