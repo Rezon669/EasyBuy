@@ -10,7 +10,7 @@
 <body>
 <h2>Enter your Product details</h2>
 <div class="addproduct">
-<form method="post" action= "/saveproduct">
+<form method="get" action= "/saveproduct">
 
  <label>Product name</label><br>
  <input type="text" name="name" id="name"><br><br>

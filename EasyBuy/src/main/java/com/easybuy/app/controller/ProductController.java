@@ -1,10 +1,12 @@
-package com.easybuy.app;
+package com.easybuy.app.controller;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -19,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.easybuy.app.ProductRepo;
+import com.easybuy.app.entity.Product;
+import com.easybuy.app.repository.ProductRepo;
 
 @Controller
 public class ProductController {
 
+	private static final Logger logger = LogManager.getLogger(ProductController.class);
 	@Autowired
 	ProductRepo repo;
 
@@ -54,7 +58,7 @@ public class ProductController {
 		return "App";
 	}
 
-	@PostMapping("/easybuy/secure/saveproduct")
+	@GetMapping("/easybuy/secure/saveproduct")
 	public String saveProduct(Product product) {
 
 		repo.save(product);

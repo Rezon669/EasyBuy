@@ -1,48 +1,46 @@
-package com.easybuy.app;
+package com.easybuy.app.controller;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.mysql.cj.Session;
+import com.easybuy.app.entity.Users;
+import com.easybuy.app.repository.UsersRepo;
+import com.easybuy.app.service.LoginService;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Controller
 @Transactional
 
 public class LoginController {
 
+	private static final Logger logger = LogManager.getLogger(LoginController.class);
+
 	@Autowired
 	UsersRepo usersrepo;
 
+//	private EmailService emailService;
+
 	Users user;
 
-	String email;
+	private String email;
 
-	private final LoginService loginservice;
+	private LoginService loginservice;
 
+	@Autowired
 	public LoginController(LoginService loginservice) {
 		this.loginservice = loginservice;
 	}
 
 	@GetMapping("/easybuy/signin")
 	public String showLoginpage() {
-		// method to navigate signin page
 		return "signin";
 	}
 
@@ -51,10 +49,12 @@ public class LoginController {
 		// method to create account
 		try {
 			loginservice.createUsers(user);
+			logger.info("User registred Successfully");
 			return "backtologin";
 		} catch (IllegalArgumentException e) {
 			// return "userexists";
 			model.addAttribute("errorMessage", e.getMessage());
+			logger.error(e);
 			return "signup";
 		}
 
@@ -73,6 +73,7 @@ public class LoginController {
 
 		catch (IllegalArgumentException e) {
 			model.addAttribute("errorMessage", e.getMessage());
+			logger.error(e);
 			return "signin"; // return the login page again if login fails
 		}
 
@@ -104,6 +105,7 @@ public class LoginController {
 		} catch (IllegalArgumentException e) {
 			// return "userexists";
 			model.addAttribute("errorMessage", e.getMessage());
+			logger.error(e);
 			return "emailverify";
 		}
 	}
@@ -129,17 +131,16 @@ public class LoginController {
 	public String resetPassword(@RequestParam(value = "password", required = true) String password,
 			@RequestParam(value = "confirmpassword", required = true) String confirmpassword, Model model) {
 		try {
-			loginservice.checkPassword(password, confirmpassword);
 
-			usersrepo.updatePasswordByEmailid(password, email);
+			loginservice.checkPassword(password, confirmpassword, email);
 
-			// usersrepo.setPassword(password);
-
+			logger.info("Password updated successfully");
 			return "passwordupdate";
 
 		} catch (IllegalArgumentException e) {
 			// return "userexists";
 			model.addAttribute("errorMessage", e.getMessage());
+			logger.error(e);
 			return "resetpassword";
 		}
 	}
