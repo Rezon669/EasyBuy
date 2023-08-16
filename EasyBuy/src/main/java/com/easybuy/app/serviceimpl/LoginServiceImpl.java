@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.easybuy.app.entity.Users;
 import com.easybuy.app.repository.UsersRepo;
 import com.easybuy.app.service.EmailService;
+import com.easybuy.app.service.EmailValidator;
 import com.easybuy.app.service.EmailVerificationService;
 import com.easybuy.app.service.LoginService;
 
@@ -23,6 +24,7 @@ import software.amazon.awssdk.services.ses.model.GetIdentityVerificationAttribut
 @Service
 public class LoginServiceImpl implements LoginService {
 	private static final Logger logger = LogManager.getLogger(LoginServiceImpl.class);
+//	private static final String EmailValidator = null;
 	@Autowired
 	UsersRepo usersrepo;
 	
@@ -72,17 +74,45 @@ public class LoginServiceImpl implements LoginService {
 		}
 
 		String emailid = user.getEmailid();
+		String phno = user.getMobilenumber();
+		
+		boolean isValidEmail= Regex.isValidGmailAddress(emailid);
+	
+		if(isValidEmail == true) {
+			boolean isValidPhno= Regex.isValidPhoneNumber(phno);
+			if(isValidPhno == true) {
+				
+			}else {
+				throw new IllegalArgumentException("Phone number is not Valid");	
+			}
+		}else {
+			throw new IllegalArgumentException("Email id is not Valid");
+		}
 		// Save the user to the database
 		boolean emailverifiedstatus;
 		try {
 		
-		emailverifiedstatus = emailVerificationService.verifyEmail(emailid);
+		//emailverifiedstatus = emailVerificationService.verifyEmail(emailid);
+			emailverifiedstatus = EmailValidator.isValidEmail(emailid);
 		logger.info("Verfication email is sent to Given emailid");
 		//throw new IllegalArgumentException("One verfication email is sent to ypur given emaild");
 	//	return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 if(emailverifiedstatus== true) {
 			
 			usersrepo.save(user);
+			
+			String subject = "EasyBuy: Welcome Email";
+			
+			String body=
+					"Hi..." + user.getUsername() 
+					+ "\n"
+					+ "This is the mail form the EasyBuy.\n"
+					+ "Your EasyBuy account has been successfully created\n" 
+					+ "Kindly reach out to us if any information required.\n"
+					+ "\n"
+					+ "Thank you";
+			String toEmail = user.getEmailid();
+			emailService.sendEmail( toEmail,  subject,  body);
 }
 		}catch(Exception e) {
 			logger.error(e);
@@ -190,13 +220,17 @@ if(emailverifiedstatus== true) {
  //  emailService.getEmailStatus(email);
 				
 				String subject = "EasyBuy: Account Password Updated";
-				String fromEmail= "rezon449@gmail.com";
-				String body="Hi..."
-						+ " your EasyBuy account password has been updated" 
-						
+				
+				String body=
+						"Hi...\n"
+						+ "\n"
+						+ "This is the mail form the Easybuy.\n"
+						+ "Your EasyBuy account password has been updated\n" 
+						+ "Kindly reach out to us if any information required.\n"
+						+ "\n"
 						+ "Thank you";
 				String toEmail = email;
-				emailService.sendEmail( fromEmail,  toEmail,  subject,  body);
+				emailService.sendEmail( toEmail,  subject,  body);
 			
 		}
 	
