@@ -22,6 +22,7 @@
 			<input id="submit" type="submit" value="Submit"><br> <br>
 
 
+<t></t><a href="/easybuy/signin"> Click here</a><t> to login if you remember your password</t>
 		</form>
 	</div>
 </body>

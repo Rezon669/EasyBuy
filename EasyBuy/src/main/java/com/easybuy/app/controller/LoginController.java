@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.easybuy.app.entity.Users;
@@ -127,7 +128,7 @@ public class LoginController {
 	 * model.addAttribute("errorMessage", e.getMessage()); return "resetpassword"; }
 	 * }
 	 */
-	@GetMapping("/easybuy/resetpassword")
+	@PostMapping("/easybuy/resetpassword")
 	public String resetPassword(@RequestParam(value = "password", required = true) String password,
 			@RequestParam(value = "confirmpassword", required = true) String confirmpassword, Model model) {
 		try {

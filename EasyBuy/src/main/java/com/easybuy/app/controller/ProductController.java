@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.easybuy.app.entity.Product;
+import com.easybuy.app.entity.Users;
 import com.easybuy.app.repository.ProductRepo;
+import com.easybuy.app.service.EmailValidator;
+import com.easybuy.app.serviceimpl.Regex;
 
 @Controller
 public class ProductController {
@@ -58,14 +62,47 @@ public class ProductController {
 		return "App";
 	}
 
-	@GetMapping("/easybuy/secure/saveproduct")
-	public String saveProduct(Product product) {
+	/*
+	 * @GetMapping("/easybuy/secure/saveproduct") public String saveProduct(Product
+	 * product) {
+	 * 
+	 * repo.save(product); return "thankyou"; }
+	 */
+	
 
+	// Check if the username already exists
+	public ResponseEntity<String> addProduct(Product product){
+	if (product.getName().isEmpty() 
+			|| product.getCategory().isEmpty()
+			|| product.getSearchkeyword().isEmpty() ) {
+		logger.warn("All the fields are mandataroy fields");
+		throw new IllegalArgumentException("All the fields are mandataroy fields");
+	} /*else if (usersrepo.findByUsername(user.getUsername()) != null) {
+		logger.warn("Username already exists");
+		throw new IllegalArgumentException("Username already exists");
+	} else if (usersrepo.findByEmailid(user.getEmailid()) != null) {
+		logger.warn("Email id already exists");
+		throw new IllegalArgumentException("Email id already exists");
+	}*/
+
+		
 		repo.save(product);
-		return "thankyou";
-	}
+		return null;
+	}	
 
-	@GetMapping("/easybuy/secure/listofproducts")
+	/*
+	 * String subject = "EasyBuy: Welcome Email";
+	 * 
+	 * String body= "Hi..." + user.getUsername() + "\n" +
+	 * "This is the mail form the EasyBuy.\n" +
+	 * "Your EasyBuy account has been successfully created\n" +
+	 * "Kindly reach out to us if any information required.\n" + "\n" + "Thank you";
+	 * String toEmail = user.getEmailid(); emailService.sendEmail( toEmail, subject,
+	 * body); } }catch(Exception e) { logger.error(e); throw new
+	 * IllegalArgumentException("Invalid Email ID"); } return null;
+	 * 
+	 * }
+	 */	@GetMapping("/easybuy/secure/listofproducts")
 	public ModelAndView listofProducts(HttpSession session) {
 
 		ModelAndView mv = new ModelAndView("listofproducts");

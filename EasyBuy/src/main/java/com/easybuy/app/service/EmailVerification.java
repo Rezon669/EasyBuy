@@ -23,7 +23,7 @@ public class EmailVerification {
 		this.emailService = emailService;
 	}
 
-	public void checkPassword(String password, String confirmpassword, String email) {
+	public void checkPasswords(String password, String confirmpassword, String email) {
 
 		if (password.isEmpty() || confirmpassword.isEmpty()) {
 			logger.warn("Please enter the Passwords");
@@ -43,7 +43,7 @@ public class EmailVerification {
 
 					+ "Thank you";
 			String toEmail = email;
-			emailService.sendEmail(fromEmail, toEmail, subject, body);
+			emailService.sendEmail(fromEmail, toEmail, subject);
 
 		} catch (Exception e) {
 			logger.error("Emaild is not verified in AWS SES to send Email");

@@ -11,7 +11,7 @@
 <body>
 	<h2>Please reset your password</h2>
 	<div class="emailverify">
-		<form method="get" action="/easybuy/resetpassword">
+		<form method="post" action="/easybuy/resetpassword">
 
 
 			<p>${errorMessage}</p>
