@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.easybuy.app.entity.Users;
@@ -19,6 +20,7 @@ import org.apache.logging.log4j.Logger;
 
 @Controller
 @Transactional
+@RequestMapping
 
 public class LoginController {
 
@@ -45,12 +47,13 @@ public class LoginController {
 		return "signin";
 	}
 
-	@GetMapping("/easybuy/createaccount")
+	@PostMapping("/easybuy/createaccount")
 	public String createUser(Users user, Model model) {
 		// method to create account
 		try {
 			loginservice.createUsers(user);
 			logger.info("User registred Successfully");
+
 			return "backtologin";
 		} catch (IllegalArgumentException e) {
 			// return "userexists";
@@ -61,6 +64,25 @@ public class LoginController {
 
 	}
 
+	/*
+	 * @GetMapping("/easybuy/loginvalidation") // method to perform login validation
+	 * public String login(@RequestParam(value = "username", required = true) String
+	 * username,
+	 * 
+	 * @RequestParam(value = "password", required = true) String password, Model
+	 * model, HttpSession session) { try {
+	 * 
+	 * loginservice.loginValidation(username, password, session);
+	 * 
+	 * return "welcome"; }
+	 * 
+	 * catch (IllegalArgumentException e) { model.addAttribute("errorMessage",
+	 * e.getMessage()); logger.error(e); return "signin"; // return the login page
+	 * again if login fails }
+	 * 
+	 * }
+	 */
+	
 	@GetMapping("/easybuy/loginvalidation")
 	// method to perform login validation
 	public String login(@RequestParam(value = "username", required = true) String username,

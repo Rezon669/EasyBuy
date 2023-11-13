@@ -1,38 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>create-account</title>
-<link rel="stylesheet" type="text/css" href="css/signup.css"/>
+<link rel="stylesheet" type="text/css" href="/static/css/signup.css" />
 </head>
 <body>
-<h2>Enter your details to create Account</h2>
-<div class="signup">
-<form method="post" action="/createaccount">
-
- 
-    <p>${errorMessage}</p>
- <label>Name</label><br>
- <input type="text" name="name" id="name"><br><br>
- 
- <label>Mobile Number</label><br>
- <input type="text" name="mobilenummber" id="mobilenummber"><br><br>
- 
- <label>Address</label><br>
- <input type="text" name="address" id="address"><br><br>
- 
- <label>Password</label><br>
- <input type="password" name="password" id="password"><br><br>
-
-<input id="submit" type="submit" value="Save"><br><br>
+	<h2>Enter your details to Create an Account</h2>
+	<div class="signup">
+		<form method="post" action="/easybuy/createaccount">
 
 
-</form>
-<a href="/signin">Already have an Account</a>
+			<p>${errorMessage}</p>
 
-</div>
+			<label>Username</label><br> <input type="text" name="username"
+				id="username" placeholder="Enter your Username"><br>
+			<br> <label>Email ID</label><br> <input type="text"
+				name="emailid" id="emailid" placeholder="Enter your Email Id"><br>
+			<br> <label>Mobile Number</label><br> <input type="text"
+				name="mobilenumber" id="mobilenumber"
+				placeholder="Enter your Mobile Number"><br>
+			<br> <label>Password</label><br> <input type="password"
+				name="password" id="password" placeholder="Enter the Password"><br>
+			<br> <label>City</label><br> <input type="text" name="city"
+				id="city" placeholder="Enter the City"><br>
+			<br> <input id="submit" type="submit" value="Save"><br>
+			<br>
+
+
+		</form>
+
+		<t></t><a href="/easybuy/signin"> Click here</a><t> to login if you have an account</t>
+	</div>
 
 </body>
 </html>
