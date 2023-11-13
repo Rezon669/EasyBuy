@@ -1,6 +1,7 @@
 package com.easybuy.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.mail.SimpleMailMessage;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
 	
-	
+	/*
+	 * @Value("${mail.sender.email}") private String senderEmail;
+	 */
 	
 	 private final JavaMailSender mailSender;
 

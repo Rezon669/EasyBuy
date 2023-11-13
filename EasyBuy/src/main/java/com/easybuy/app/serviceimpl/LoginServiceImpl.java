@@ -1,5 +1,8 @@
 package com.easybuy.app.serviceimpl;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import javax.naming.NameNotFoundException;
@@ -14,12 +17,8 @@ import org.springframework.stereotype.Service;
 import com.easybuy.app.entity.Users;
 import com.easybuy.app.repository.UsersRepo;
 import com.easybuy.app.service.EmailService;
-import com.easybuy.app.service.EmailValidator;
 import com.easybuy.app.service.EmailVerificationService;
 import com.easybuy.app.service.LoginService;
-
-import software.amazon.awssdk.services.ses.model.GetIdentityVerificationAttributesRequest;
-
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -27,28 +26,21 @@ public class LoginServiceImpl implements LoginService {
 //	private static final String EmailValidator = null;
 	@Autowired
 	UsersRepo usersrepo;
+
 	
-	
-	
-	  EmailVerificationService emailVerificationService;
+
+	EmailVerificationService emailVerificationService;
 	private EmailService emailService;
-	
-	
-	
+
 	/*
 	 * @Autowired public LoginServiceImpl(EmailVerificationService email) {
 	 * this.emailVerificationService = email; }
 	 */
-	 
-	 
-	
-	@Autowired
-    public LoginServiceImpl(EmailService emailService) {
-        this.emailService = emailService;
-    }
-	 
 
-	
+	@Autowired
+	public LoginServiceImpl(EmailService emailService) {
+		this.emailService = emailService;
+	}
 
 	public Users loadUserByUsername(String username) throws NameNotFoundException {
 		Users user = usersrepo.findByUsername(username);
@@ -75,90 +67,50 @@ public class LoginServiceImpl implements LoginService {
 
 		String emailid = user.getEmailid();
 		String phno = user.getMobilenumber();
-		
-		boolean isValidEmail= Regex.isValidGmailAddress(emailid);
-	
-		if(isValidEmail == true) {
-			boolean isValidPhno= Regex.isValidPhoneNumber(phno);
-			if(isValidPhno == true) {
-				
-			}else {
-				throw new IllegalArgumentException("Phone number is not Valid");	
+
+		boolean isValidEmail = Regex.isValidGmailAddress(emailid);
+
+		if (isValidEmail == true) {
+			boolean isValidPhno = Regex.isValidPhoneNumber(phno);
+			if (isValidPhno == true) {
+
+			} else {
+				throw new IllegalArgumentException("Phone number is not Valid");
 			}
-		}else {
+		} else {
 			throw new IllegalArgumentException("Email id is not Valid");
 		}
-		// Save the user to the database
-		boolean emailverifiedstatus;
-		try {
+
+		String username = user.getUsername();
+		String password = user.getPassword();
+		logger.info("Generating hash value for the provided data");
 		
-		//emailverifiedstatus = emailVerificationService.verifyEmail(emailid);
-			emailverifiedstatus = EmailValidator.isValidEmail(emailid);
-		logger.info("Verfication email is sent to Given emailid");
-		//throw new IllegalArgumentException("One verfication email is sent to ypur given emaild");
-	//	return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-if(emailverifiedstatus== true) {
+		String hashvalue = generateHashvalue(username, password);
+		
+
+		user.setPassword(hashvalue);
+
+		usersrepo.save(user);
+		
+		logger.info("Sending welcome email to the given emailid");
+
+		String subject = "EasyBuy: Welcome Email";
+
+		String body = "Hi..." + user.getUsername() + "\n" + "This is the mail form the EasyBuy.\n"
+				+ "Your EasyBuy account has been successfully created\n"
+				+ "Kindly reach out to us if any information required.\n" + "\n" + "Thank you";
+		String toEmail = user.getEmailid();
+		try {
+			emailService.sendEmail(toEmail, subject, body);
 			
-			usersrepo.save(user);
+			logger.info("Successfully sent the welcome email to the given emailid");
 			
-			String subject = "EasyBuy: Welcome Email";
-			
-			String body=
-					"Hi..." + user.getUsername() 
-					+ "\n"
-					+ "This is the mail form the EasyBuy.\n"
-					+ "Your EasyBuy account has been successfully created\n" 
-					+ "Kindly reach out to us if any information required.\n"
-					+ "\n"
-					+ "Thank you";
-			String toEmail = user.getEmailid();
-			emailService.sendEmail( toEmail,  subject,  body);
-}
-		}catch(Exception e) {
-			logger.error(e);
-			throw new IllegalArgumentException("Invalid Email ID");
+		} catch (Exception e) {
+			logger.info("Failed to send welcome email");
 		}
+
 		return null;
 	}
-	
-		//throw new Const("hfvisduhb");
-		/*
-		 * String subject = "EasyBuy: Welcome Email"; String fromEmail=
-		 * "rezon449@gmail.com"; String body="Hi" + user.getUsername() +
-		 * "Successfully  created the account for you"
-		 * 
-		 * + "Thank you"; String toEmail = user.getEmailid();
-		 */
-		/*
-		 * try { if(emailverifiedstatus== true) { ///emailService.sendEmail( fromEmail,
-		 * toEmail, subject, body); usersrepo.save(user); } }catch(Exception e){
-		 * 
-		 * throw new IllegalArgumentException("Invalid Email ID"); }
-		 */
-		//return null;
-		
-	
-		/* return ResponseEntity.ok("User registered successfully!");
-		}
-		}catch(Exception e){
-			
-			throw new IllegalArgumentException("Invalid Email ID");
-			}
-		return null;	
-		}*/
-		
-		//return null;
-	
-
-	/*
-	 * @Override public void emailVerification(emailid) { // TODO Auto-generated
-	 * method stub Object result = usersrepo.findByEmailid(emailid);
-	 * 
-	 * if(result == null) { throw new
-	 * IllegalArgumentException("Given emaild is not found"); }
-	 * 
-	 * }
-	 */
 
 	public void emailVerification(String emailid) {
 		// TODO Auto-generated method stub
@@ -176,69 +128,78 @@ if(emailverifiedstatus== true) {
 
 	}
 
-	
-		@Override
+	@Override
 	public void loginValidation(String username, String password, HttpSession session) {
 		// TODO Auto-generated method stub
 		if (username.isEmpty() || password.isEmpty()) {
 			logger.warn("Please enter the Username & Password");
 			throw new IllegalArgumentException("Please enter the Username & Password");
 		}
+		
+		String hashvalue=generateHashvalue(username, password);
+		
 		Users user = usersrepo.findByUsername(username);
 		if (user == null) {
 			logger.error("Username not found");
 			throw new IllegalArgumentException("Username not found");
 		}
 
-		else if (user != null && !user.getPassword().equals(password)) {
+		else if (user != null && !user.getPassword().equals(hashvalue)) {
 
-			logger.error("Wrong Password");
-			throw new IllegalArgumentException("Wrong Password");
-			//session.setAttribute("username", username);
+			logger.error("Autehtication failed");
+			throw new IllegalArgumentException("Autehtication failed");
+			// session.setAttribute("username", username);
 		}
 
 	}
 
+	public void checkPassword(String password, String confirmpassword, String email) {
+		// TODO Auto-generated method stub
 
+		if (password.isEmpty() || confirmpassword.isEmpty()) {
+			logger.warn("Please enter the Passwords");
+			throw new IllegalArgumentException("Please enter the Passwords");
+		} else if (!password.equals(confirmpassword)) {
+			logger.warn("Passwords didn't match");
+			throw new IllegalArgumentException("Passwords didn't match");
+		}
 
+		usersrepo.updatePasswordByEmailid(password, email);
 
-		public void checkPassword(String password, String confirmpassword, String email) {
-			// TODO Auto-generated method stub
+		String subject = "EasyBuy: Account Password Updated";
 
-			if (password.isEmpty() || confirmpassword.isEmpty()) {
-				logger.warn("Please enter the Passwords");
-				throw new IllegalArgumentException("Please enter the Passwords");
-			} else if (!password.equals(confirmpassword)) {
-				logger.warn("Passwords didn't match");
-				throw new IllegalArgumentException("Passwords didn't match");
+		String body = "Hi...\n" + "\n" + "This is the mail form the Easybuy.\n"
+				+ "Your EasyBuy account password has been updated\n"
+				+ "Kindly reach out to us if any information required.\n" + "\n" + "Thank you";
+		String toEmail = email;
+		emailService.sendEmail(toEmail, subject, body);
+
+	}
+
+	public String generateHashvalue(String username, String password) {
+		
+
+		// Combine username and password
+		String genratedHashvalue = username + password;
+
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(genratedHashvalue.getBytes(StandardCharsets.UTF_8));
+
+			// Convert byte array to a hexadecimal representation
+			StringBuilder hexStringBuilder = new StringBuilder();
+			for (byte b : hash) {
+				String hex = Integer.toHexString(0xff & b);
+				if (hex.length() == 1) {
+					hexStringBuilder.append('0');
+				}
+				hexStringBuilder.append(hex);
 			}
-			
 
-	usersrepo.updatePasswordByEmailid(password, email);
-	
-	
- //  emailService.getEmailStatus(email);
-				
-				String subject = "EasyBuy: Account Password Updated";
-				
-				String body=
-						"Hi...\n"
-						+ "\n"
-						+ "This is the mail form the Easybuy.\n"
-						+ "Your EasyBuy account password has been updated\n" 
-						+ "Kindly reach out to us if any information required.\n"
-						+ "\n"
-						+ "Thank you";
-				String toEmail = email;
-				emailService.sendEmail( toEmail,  subject,  body);
-			
+			return hexStringBuilder.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return null;
 		}
-	
-		}
-
-
-
-		
-
-		
-
+	}
+}

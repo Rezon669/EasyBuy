@@ -10,7 +10,7 @@
 <body>
 	<h2>Enter your details to Create an Account</h2>
 	<div class="signup">
-		<form method="get" action="/easybuy/createaccount">
+		<form method="post" action="/easybuy/createaccount">
 
 
 			<p>${errorMessage}</p>
