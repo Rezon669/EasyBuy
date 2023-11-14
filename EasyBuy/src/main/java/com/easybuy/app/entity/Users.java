@@ -13,7 +13,7 @@ public class Users {
 	@Id
 	@GeneratedValue
 
-	private int uid;
+	private int userid;
 	private String username;
 	private String emailid;
 	private String mobilenumber;
@@ -35,12 +35,12 @@ public class Users {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getUid() {
-		return uid;
+	public int getUserid() {
+		return userid;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
 	public String getUsername() {
@@ -85,7 +85,7 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [uid=" + uid + ", username=" + username + ", emailid=" + emailid + ", mobilenumber="
+		return "Users [userid=" + userid + ", username=" + username + ", emailid=" + emailid + ", mobilenumber="
 				+ mobilenumber + ", password=" + password + ", city=" + city + "]";
 	}
 

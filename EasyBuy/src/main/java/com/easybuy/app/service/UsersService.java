@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.easybuy.app.entity.Users;
 
-public interface LoginService {
+public interface UsersService {
 
 	Users loadUserByUsername(String username) throws NameNotFoundException;
 
