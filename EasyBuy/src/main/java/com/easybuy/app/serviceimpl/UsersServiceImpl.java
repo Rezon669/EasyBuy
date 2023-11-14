@@ -17,19 +17,18 @@ import org.springframework.stereotype.Service;
 import com.easybuy.app.entity.Users;
 import com.easybuy.app.repository.UsersRepo;
 import com.easybuy.app.service.EmailService;
-import com.easybuy.app.service.EmailVerificationService;
-import com.easybuy.app.service.LoginService;
+import com.easybuy.app.service.UsersService;
 
 @Service
-public class LoginServiceImpl implements LoginService {
-	private static final Logger logger = LogManager.getLogger(LoginServiceImpl.class);
+public class UsersServiceImpl implements UsersService {
+	private static final Logger logger = LogManager.getLogger(UsersServiceImpl.class);
+
+	String username;
 //	private static final String EmailValidator = null;
 	@Autowired
 	UsersRepo usersrepo;
 
-	
-
-	EmailVerificationService emailVerificationService;
+	// EmailVerificationService emailVerificationService;
 	private EmailService emailService;
 
 	/*
@@ -38,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
 	 */
 
 	@Autowired
-	public LoginServiceImpl(EmailService emailService) {
+	public UsersServiceImpl(EmailService emailService) {
 		this.emailService = emailService;
 	}
 
@@ -53,6 +52,7 @@ public class LoginServiceImpl implements LoginService {
 
 	public ResponseEntity<String> createUsers(Users user) {
 		// Check if the username already exists
+
 		if (user.getUsername().isEmpty() || user.getPassword().isEmpty() || user.getMobilenumber().isEmpty()
 				|| user.getEmailid().isEmpty() || user.getCity().isEmpty()) {
 			logger.warn("All the fields are mandataroy fields");
@@ -69,29 +69,33 @@ public class LoginServiceImpl implements LoginService {
 		String phno = user.getMobilenumber();
 
 		boolean isValidEmail = Regex.isValidGmailAddress(emailid);
+		boolean isValidPhno = Regex.isValidPhoneNumber(phno);
 
-		if (isValidEmail == true) {
-			boolean isValidPhno = Regex.isValidPhoneNumber(phno);
-			if (isValidPhno == true) {
-
+		try {
+			if (isValidEmail) {
+				if (isValidPhno) {
+					// Your logic for a valid email and phone number
+				} else {
+					throw new IllegalArgumentException("Mobile number is not valid");
+				}
 			} else {
-				throw new IllegalArgumentException("Phone number is not Valid");
+				throw new IllegalArgumentException("Email id is not valid");
 			}
-		} else {
-			throw new IllegalArgumentException("Email id is not Valid");
+		} catch (Exception e) {
+			logger.error(e);
+			throw new IllegalArgumentException(" User creation failed : " + e.getMessage(), e);
 		}
 
 		String username = user.getUsername();
 		String password = user.getPassword();
 		logger.info("Generating hash value for the provided data");
-		
+
 		String hashvalue = generateHashvalue(username, password);
-		
 
 		user.setPassword(hashvalue);
 
 		usersrepo.save(user);
-		
+
 		logger.info("Sending welcome email to the given emailid");
 
 		String subject = "EasyBuy: Welcome Email";
@@ -102,11 +106,13 @@ public class LoginServiceImpl implements LoginService {
 		String toEmail = user.getEmailid();
 		try {
 			emailService.sendEmail(toEmail, subject, body);
-			
+
 			logger.info("Successfully sent the welcome email to the given emailid");
-			
+
 		} catch (Exception e) {
+
 			logger.info("Failed to send welcome email");
+			logger.error(e);
 		}
 
 		return null;
@@ -120,6 +126,7 @@ public class LoginServiceImpl implements LoginService {
 			throw new IllegalArgumentException("Please enter the emaild");
 		}
 		Object result = usersrepo.findByEmailid(emailid);
+		username = usersrepo.findByUser(emailid);
 
 		if (result == null) {
 			logger.error("Given emaild is not found");
@@ -135,9 +142,9 @@ public class LoginServiceImpl implements LoginService {
 			logger.warn("Please enter the Username & Password");
 			throw new IllegalArgumentException("Please enter the Username & Password");
 		}
-		
-		String hashvalue=generateHashvalue(username, password);
-		
+
+		String hashvalue = generateHashvalue(username, password);
+
 		Users user = usersrepo.findByUsername(username);
 		if (user == null) {
 			logger.error("Username not found");
@@ -163,8 +170,9 @@ public class LoginServiceImpl implements LoginService {
 			logger.warn("Passwords didn't match");
 			throw new IllegalArgumentException("Passwords didn't match");
 		}
+		String hashpassowrd = generateHashvalue(username, password);
 
-		usersrepo.updatePasswordByEmailid(password, email);
+		usersrepo.updatePasswordByEmailid(hashpassowrd, email);
 
 		String subject = "EasyBuy: Account Password Updated";
 
@@ -177,7 +185,6 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	public String generateHashvalue(String username, String password) {
-		
 
 		// Combine username and password
 		String genratedHashvalue = username + password;
