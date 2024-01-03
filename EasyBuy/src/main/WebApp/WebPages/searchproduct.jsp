@@ -15,6 +15,8 @@
 		<br> <input type="text" name="searchkeyword" id="searchkeyword"
 			autofocus><br>
 		<br> <input type="submit" id="search" value="Search">
+		
+		<t>	<a href="/easybuy/user/backtohome">Click here</a> to go back</t>
 	</form>
 </body>
 </html>

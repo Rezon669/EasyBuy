@@ -57,4 +57,21 @@ span{
     color: white;  
     font-size: 17px;  
 }  
- 
+ t{
+ text-align: left;
+    color: #ff0080;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 20px;
+}
+
+a:hover, a:active {
+  background-color: #408080;
+} 
+a{
+ text-align: left;
+    color: #00ffff;  
+    background-color: none; 
+    text-decoration: none; 
+    font-size: 20px;
+}

@@ -18,7 +18,7 @@
 		<h2>We have sent the Welcome email to the provided Email Id</h2>
 		<br>
 	<h2>
-		<a href="/easybuy/signin">click here</a> to go back to login page
+		<a href="/easybuy/user/signin">click here</a> to go back to login page
 	</h2>
 </body>
 </html>

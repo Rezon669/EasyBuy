@@ -10,7 +10,7 @@
 <body>
 	<h2>Enter your details to Create an Account</h2>
 	<div class="signup">
-		<form method="post" action="/easybuy/createaccount">
+		<form method="post" action="/easybuy/user/createaccount">
 
 
 			<p>${errorMessage}</p>
@@ -26,13 +26,20 @@
 				name="password" id="password" placeholder="Enter the Password"><br>
 			<br> <label>City</label><br> <input type="text" name="city"
 				id="city" placeholder="Enter the City"><br>
+			
+			<br> <label>Role</label><br> <select name="role"
+				id="role">
+				<option value="select one">select one</option>
+				<option value="ADMIN">ADMIN</option>
+				<option value="PUBLIC">PUBLIC</option>
+			</select><br>
 			<br> <input id="submit" type="submit" value="Save"><br>
-			<br>
+			
 
 
 		</form>
 
-		<t></t><a href="/easybuy/signin"> Click here</a><t> to login if you have an account</t>
+		<t></t><a href="/easybuy/user/signin"> Click here</a><t> to login if you have an account</t>
 	</div>
 
 </body>

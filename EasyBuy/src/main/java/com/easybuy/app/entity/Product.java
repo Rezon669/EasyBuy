@@ -14,10 +14,10 @@ public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long productid;
 
 	@Column(nullable = false, length = 45)
-	private String name;
+	private String productname;
 
 	@Column(nullable = false, length = 10)
 	private int price;
@@ -31,20 +31,20 @@ public class Product {
 	@Column(nullable = false, length = 45)
 	private String searchkeyword;
 
-	public long getId() {
-		return id;
+	public long getProductid() {
+		return productid;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setProductid(long productid) {
+		this.productid = productid;
 	}
 
-	public String getName() {
-		return name;
+	public String getProductname() {
+		return productname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProductname(String productname) {
+		this.productname = productname;
 	}
 
 	public int getPrice() {
@@ -81,7 +81,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", category="
+		return "Product [productid=" + productid + ", productname=" + productname + ", price=" + price + ", quantity=" + quantity + ", category="
 				+ category + ", searchkeyword=" + searchkeyword + "]";
 	}
 

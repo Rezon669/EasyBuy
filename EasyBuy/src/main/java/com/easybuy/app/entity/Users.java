@@ -1,38 +1,47 @@
 package com.easybuy.app.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
+
 @Table(name = "users")
+
 public class Users {
 	@Id
 	@GeneratedValue
 
 	private int userid;
+
 	private String username;
 	private String emailid;
 	private String mobilenumber;
 	private String password;
 	private String city;
+	private String role;
 
 	public Users() {
-		// Default constructor implementation
 
 	}
 
-	public Users(String username, String password) {
-		// Default constructor implementation
+	public Users(int userid, String username, String emailid, String mobilenumber, String password, String city,
+			String role) {
+		super();
+		this.userid = userid;
 		this.username = username;
+		this.emailid = emailid;
+		this.mobilenumber = mobilenumber;
 		this.password = password;
-	}
-
-	public Users(String username, String password, ArrayList arrayList) {
-		// TODO Auto-generated constructor stub
+		this.city = city;
+		this.role = role;
 	}
 
 	public int getUserid() {
@@ -83,10 +92,23 @@ public class Users {
 		this.city = city;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
 		return "Users [userid=" + userid + ", username=" + username + ", emailid=" + emailid + ", mobilenumber="
-				+ mobilenumber + ", password=" + password + ", city=" + city + "]";
+				+ mobilenumber + ", password=" + password + ", city=" + city + ", role=" + role + "]";
 	}
 
+	public boolean isEmpty() {
+		return username == null || username.isEmpty() && emailid == null || emailid.isEmpty() && mobilenumber == null
+				|| mobilenumber.isEmpty() && password == null || password.isEmpty() && city == null
+				|| city.isEmpty() && role == null || role.isEmpty();
+	}
 }
