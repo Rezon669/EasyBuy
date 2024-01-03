@@ -11,10 +11,13 @@
 <body>
 	<h2>Please reset your password</h2>
 	<div class="emailverify">
-		<form method="post" action="/easybuy/resetpassword">
+		<form method="post" action="/easybuy/user/updatepassword">
 
 
 			<p>${errorMessage}</p>
+			
+			<label>Email Id</label><br> <input type="text" name="emailid"
+				id="emailid" placeholder="Enter your Email Id"><br> <br>
 
 			<label>Password</label><br> <input type="text" name="password"
 				id="password" placeholder="Enter Password"><br>

@@ -12,7 +12,7 @@
 	<br>
 	<br>
 	<div class="emailverify">
-		<form method="get" action="/easybuy/emailidverification">
+		<form method="get" action="/easybuy/user/emailidverification">
 
 			<t>Enter your Email id to reset password</t>
 
@@ -22,7 +22,7 @@
 			<input id="submit" type="submit" value="Submit"><br> <br>
 
 
-<t></t><a href="/easybuy/signin"> Click here</a><t> to login if you remember your password</t>
+<t></t><a href="/easybuy/user/signin"> Click here</a><t> to login if you remember your password</t>
 		</form>
 	</div>
 </body>

@@ -28,7 +28,7 @@
 		for (int c = 0; c < s.size(); c++) {
 			out.print("<tr> ");
 
-			out.print("<td>" + s.get(c).getName() + "</td>");
+			out.print("<td>" + s.get(c).getProductname() + "</td>");
 			out.print("<td>" + s.get(c).getPrice() + "</td>");
 			out.print("<td>" + s.get(c).getQuantity() + "</td>");
 			out.print("<td>" + s.get(c).getCategory() + "</td>");
@@ -37,7 +37,7 @@
 		%>
 	</table>
 	<h4>
-		<a href="/easybuy/secure/app">click here</a> to go back
+		<a href="/easybuy/user/backtohome">click here</a> to go back
 	</h4>
 </body>
 </html>

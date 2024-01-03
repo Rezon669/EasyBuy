@@ -1,0 +1,44 @@
+CREATE TABLE `product` (
+  `productid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `productname` varchar(45) NOT NULL,
+  `category` varchar(45) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `searchkeyword` varchar(45) NOT NULL,
+  `id` bigint(20) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`productid`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `users` (
+  `userid` int(11) NOT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `emailid` varchar(255) DEFAULT NULL,
+  `mobilenumber` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `login` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `password` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `loginid` bigint(20) NOT NULL,
+  `emailid` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_3svxcq6q51yfdg253l6x3dget` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `cartitems` (
+  `cartitemid` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) DEFAULT NULL,
+  `itemname` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL,
+  `productid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  PRIMARY KEY (`cartitemid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

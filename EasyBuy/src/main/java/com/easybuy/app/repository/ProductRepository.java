@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.easybuy.app.entity.Product;
 
-public interface ProductRepo extends JpaRepository<Product, String> {
+@Repository
+public interface ProductRepository extends JpaRepository<Product, String> {
 
 	// List findBy(String Category, String category);
 

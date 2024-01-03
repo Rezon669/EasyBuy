@@ -1,28 +1,26 @@
 package com.easybuy.app.service;
 
+import java.util.Map;
+
 import javax.naming.NameNotFoundException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.easybuy.app.entity.Users;
 
 public interface UsersService {
 
-	Users loadUserByUsername(String username) throws NameNotFoundException;
+//	String loadUserByUsername(String username) throws NameNotFoundException;
 
-	ResponseEntity<String> createUsers(Users user);
+	String createUsers(Users user);
 
-	void emailVerification(String emailid);
+	String loginValidation(String email, String password);
 
-	
+	void updatePassword(String password, String confirmpassword, String email);
 
-	void loginValidation(String username, String password, HttpSession session);
-
-	void checkPassword(String password, String confirmpassword, String email);
-
-	//void checkPassword(String password, String confirmpassword, String email);
-	
-	
 
 }
